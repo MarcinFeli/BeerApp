@@ -1,6 +1,6 @@
 <template >
     <div>
-       Beer List 
+       By Procent
     </div>
 </template>
 <script>

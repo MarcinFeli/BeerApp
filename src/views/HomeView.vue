@@ -11,15 +11,24 @@
 					{{ letter }}
 				</router-link>
 			</div>
+			
 		</v-responsive>
 	</v-app>
 </template>
 
 <script>
+import { onMounted, ref } from 'vue'
+import axiosClient from '../axiosClient'
 export default {
 	setup() {
 		const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-		return { letters }
+		const ingredients = ref([])
+		onMounted(async () => {
+			const response = await axiosClient.get('beers')
+			ingredients.value = response.data
+			return { response }
+		})
+		return { letters, onMounted, ingredients }
 	},
 }
 </script>

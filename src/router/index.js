@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import BeerList from '../views/BeerList.vue'
+import BeerByLetter from '../views/BeerByLetter.vue'
+import BeerByName from '../views/BeerByName.vue'
+import BeerByProcent from '../views/BeerByProcent.vue'
 
 Vue.use(VueRouter)
 
@@ -12,9 +14,19 @@ const routes = [
 		component: HomeView,
 	},
 	{
-		path: '/letter/:letter',
+		path: '/by-name/:name?',
+		name: 'byName',
+		component: BeerByName,
+	},
+	{
+		path: '/by-letter/:letter?',
 		name: 'byLetter',
-		component: BeerList,
+		component: BeerByLetter,
+	},
+	{
+		path: '/by-procent/:abv?',
+		name: 'byProcent',
+		component: BeerByProcent,
 	},
 ]
 
