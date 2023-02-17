@@ -1,40 +1,31 @@
 <template>
 	<v-app>
-    <v-card class="mx-auto" color="grey-lighten-3" max-width="400">
-      <v-card-text>
-        <v-text-field
-         
-          density="compact"
-          variant="solo"
-          label="Search templates"
-          append-inner-icon="mdi-magnify"
-          single-line
-          hide-details
-          @click:append-inner="onClick"></v-text-field>
-      </v-card-text>
-    </v-card>
-  </v-app>
+		<v-responsive class="mx-auto" width="50%">
+			<v-text-field prepend-icon="mdi-beer" label="Search beer..." type="text"></v-text-field>
+			<div class="d-flex px-2 pt-2 flex-wrap justify-center">
+				<router-link
+					class="mx-1 router-text"
+					:to="{ name: 'byLetter', params: { letter } }"
+					v-for="letter in letters"
+					:key="letter">
+					{{ letter }}
+				</router-link>
+			</div>
+		</v-responsive>
+	</v-app>
 </template>
 
 <script>
 export default {
-	data: () => ({
-		
-	}),
-
-	methods: {
-		onClick() {
-			this.loading = true
-
-			setTimeout(() => {
-				this.loading = false
-				this.loaded = true
-			}, 2000)
-		},
+	setup() {
+		const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+		return { letters }
 	},
 }
-// import { computed } from 'vue'
-// import store from '@/store'
-
-// const beers = computed(() => store.state.beers)
 </script>
+
+<style lang="scss">
+.router-text {
+	text-decoration: none;
+}
+</style>
