@@ -4,30 +4,38 @@ import HomeView from '../views/HomeView.vue'
 import BeerByLetter from '../views/BeerByLetter.vue'
 import BeerByName from '../views/BeerByName.vue'
 import BeerByProcent from '../views/BeerByProcent.vue'
+import DefaultLayout from '../components/DefaultLayout.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
 	{
 		path: '/',
-		name: 'home',
-		component: HomeView,
+		component: DefaultLayout,
+		children: [
+			{
+				path: '/',
+				name: 'home',
+				component: HomeView,
+			},
+			{
+				path: '/by-name/:name?',
+				name: 'byName',
+				component: BeerByName,
+			},
+			{
+				path: '/by-letter/:letter?',
+				name: 'byLetter',
+				component: BeerByLetter,
+			},
+			{
+				path: '/by-procent/:abv?',
+				name: 'byProcent',
+				component: BeerByProcent,
+			},
+		],
 	},
-	{
-		path: '/by-name/:name?',
-		name: 'byName',
-		component: BeerByName,
-	},
-	{
-		path: '/by-letter/:letter?',
-		name: 'byLetter',
-		component: BeerByLetter,
-	},
-	{
-		path: '/by-procent/:abv?',
-		name: 'byProcent',
-		component: BeerByProcent,
-	},
+	
 ]
 
 const router = new VueRouter({
