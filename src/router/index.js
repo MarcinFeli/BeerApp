@@ -5,6 +5,7 @@ import BeerByLetter from '../views/BeerByLetter.vue'
 import BeerByName from '../views/BeerByName.vue'
 import BeerByProcent from '../views/BeerByProcent.vue'
 import DefaultLayout from '../components/DefaultLayout.vue'
+import BeerDetails from '../views/BeerDetails.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
 				name: 'byProcent',
 				component: BeerByProcent,
 			},
+			{
+				path: '/beer-deatils/:id',
+				name: 'details',
+				component: BeerDetails
+			}
 		],
 	},
 	
