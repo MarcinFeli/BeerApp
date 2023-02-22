@@ -5,3 +5,8 @@ export function searchBeers({ commit }, keyword) {
 		commit('setSearchedBeers', data)
 	})
 }
+export function searchBeersByLetter({ commit }, letter) {
+	axiosClient.get(`beers?beer_name=${letter}`).then(({ data }) => {
+		commit('setBeersByLetter', data)
+	})
+}

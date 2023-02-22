@@ -1,5 +1,5 @@
 <template >
-    <v-app-bar app>
+    <v-app-bar color="orange orange-darken-3" app>
         <router-link class="router" :to="{ path: '/' }">
             <v-btn text large class="d-flex">
                 <v-icon>mdi-glass-mug</v-icon>
@@ -22,12 +22,7 @@
                     Beer by letter
                 </v-btn>
             </router-link>
-            <router-link class="router" :to="{ name: 'byProcent' }">
-                <v-btn text>
-                    <v-icon>mdi-beer</v-icon>
-                    Beer by %
-                </v-btn>
-            </router-link>
+            
             <!-- <v-text-field class="mr-2" prepend-icon="mdi-magnify" placeholder="Search" hide-details></v-text-field> -->
             <!-- <v-btn class="mr-2"> Search </v-btn>
             <v-btn> Reset </v-btn> -->

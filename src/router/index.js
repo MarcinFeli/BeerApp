@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import BeerByLetter from '../views/BeerByLetter.vue'
 import BeerByName from '../views/BeerByName.vue'
-import BeerByProcent from '../views/BeerByProcent.vue'
 import DefaultLayout from '../components/DefaultLayout.vue'
 import BeerDetails from '../views/BeerDetails.vue'
 
@@ -29,11 +28,7 @@ const routes = [
 				name: 'byLetter',
 				component: BeerByLetter,
 			},
-			{
-				path: '/by-procent/:abv?',
-				name: 'byProcent',
-				component: BeerByProcent,
-			},
+			
 			{
 				path: '/beer-deatils/:id',
 				name: 'details',
