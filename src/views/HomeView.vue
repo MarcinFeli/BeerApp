@@ -1,26 +1,54 @@
 <template>
 	<v-app>
-		<v-responsive class="mx-auto" width="50%">
-			<v-text-field prepend-icon="mdi-beer" label="Search beer..." type="text"></v-text-field>
-			
-			
-		</v-responsive>
+		<v-row class="justify-center align-center">
+			<v-col v-for="beer in beers" :key="beer.id" cols="6">
+				<v-card class="d-flex flex-column justify-space-between">
+					<v-card-item>
+						<h2 class="ml-3 text-h5 font-weight-bold mt-3 mb-3">
+							{{ beer.name }}
+							<v-avatar>
+								<v-img :src="beer.image_url" alt="John"></v-img>
+							</v-avatar>
+						</h2>
+						<v-divider></v-divider>
+						<v-card-text class="mb-0 d-flex flex-row align-center justify-space-around">
+							<p class="text-h6 mb-0"><v-icon color="orange">mdi-percent-outline</v-icon> Volume: {{ beer.abv }}%</p>
+							<p class="text-h6 mb-0">
+								<v-icon color="orange">mdi-silverware-fork-knife</v-icon> Food pairing: {{ beer.food_pairing[0] }}
+							</p>
+						</v-card-text>
+						<v-divider></v-divider>
+						<v-card-actions class="d-flex justify-center">
+							<v-hover v-slot="{ hover }">
+								<router-link class="router" :to="{ name: 'details', params: beer }">
+									<v-btn style="transition: 0.3s" :style="{ 'background-color': hover ? 'orange' : 'white' }" outlined>
+										<v-icon>mdi-magnify</v-icon>
+										Szczegóły
+									</v-btn>
+								</router-link>
+							</v-hover>
+						</v-card-actions>
+					</v-card-item>
+				</v-card>
+			</v-col>
+		</v-row>
 	</v-app>
 </template>
 
 <script>
-import { onMounted, ref } from 'vue'
-import axiosClient from '../axiosClient'
+import axiosClient from '@/axiosClient'
 export default {
-	setup() {
-		const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
-		const ingredients = ref([])
-		onMounted(async () => {
-			const response = await axiosClient.get('beers')
-			ingredients.value = response.data
-			return { response }
+	data() {
+		return {
+			beers: [],
+		}
+	},
+
+	created() {
+		axiosClient.get(`beers/random`).then(response => {
+			this.beers = response.data
+			console.log(this.beers)
 		})
-		return { letters, onMounted, ingredients }
 	},
 }
 </script>
