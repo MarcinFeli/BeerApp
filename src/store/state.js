@@ -1,3 +1,5 @@
 export default {
-	beers: ['Lech'],
+	searchedBeers: [{}],
+	beersByLetter: [{}],
+	
 }

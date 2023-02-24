@@ -1,5 +1,7 @@
 <template>
-	<router-view />
+	<v-app>
+		<router-view />
+	</v-app>
 </template>
 
 <script>
@@ -11,3 +13,9 @@ export default {
 	}),
 }
 </script>
+
+<style lang="scss">
+.router {
+	text-decoration: none;
+}
+</style>
