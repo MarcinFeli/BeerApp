@@ -1,5 +1,5 @@
 <template>
-	<section class="mx-auto">
+	<section class="mx-10">
 		<v-col class="d-flex beer flex-column mx-auto" v-for="beer in beers" :key="beer.id" cols="12">
 			<div class="first-div d-flex">
 				<img class="beer-img" :src="beer.image_url" :alt="beer.name" />
@@ -25,7 +25,7 @@
 					<li>{{ beer.food_pairing[2] }}</li>
 				</ul>
 			</div>
-			<p>Author: {{ beer.contributed_by }}</p>
+			<p class="text-body-1"> <span class="font-weight-bold">Author :</span> {{ beer.contributed_by }}</p>
 		</v-col>
 		<v-col> </v-col>
 	</section>

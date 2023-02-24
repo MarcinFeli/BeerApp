@@ -19,7 +19,7 @@
             <router-link class="router" :to="{ name: 'byLetter' }">
                 <v-btn text>
                     <v-icon>mdi-beer</v-icon>
-                    Beer by letter
+                    Beer by first letter
                 </v-btn>
             </router-link>
             
